@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Payment Gateway</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .phonepe { background-color: #5b2cc8; color: white; }
+    .gpay { background-color: #34a853; color: white; }
+    .paytm { background-color: #003399; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Choose Your Payment Method</h1>
+  <button class="button phonepe" onclick="payViaUPI('phonepe')">Pay with PhonePe</button>
+  <button class="button gpay" onclick="payViaUPI('gpay')">Pay with Google Pay</button>
+  <button class="button paytm" onclick="payViaUPI('paytm')">Pay with Paytm</button>
+
+  <script>
+    function payViaUPI(app) {
+      const upiId = "shanmukeshbonala@oksbi"; // Replace with your UPI ID
+      const name = "John Doe"; // Replace with payee's name
+      const amount = 500; // Replace with the amount
+      const note = "Payment for Services";
+
+      const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
+      window.location.href = upiLink;
+    }
+  </script>
+</body>
+</html>
