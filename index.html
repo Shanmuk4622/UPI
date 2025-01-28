@@ -31,14 +31,24 @@
 
   <script>
     function payViaUPI(app) {
-      const upiId = "shanmukeshbonala@oksbi"; // Replace with your UPI ID
-      const name = "John Doe"; // Replace with payee's name
-      const amount = 500; // Replace with the amount
-      const note = "Payment for Services";
-
-      const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
-      window.location.href = upiLink;
-    }
+        const upiId = "shanmukeshbonala@oksbi"; // Replace with your UPI ID
+        const name = "John Doe"; // Payee name
+        const amount = 500; // Amount to be paid
+        const note = "Payment for Services"; // Payment note
+      
+        // Validate mandatory fields
+        if (!upiId || !name || !amount) {
+          alert("Payment details are incomplete. Please check your UPI ID, name, or amount.");
+          return;
+        }
+      
+        // Construct the UPI deep link
+        const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
+      
+        // Redirect to the UPI app
+        window.location.href = upiLink;
+      }
+      
   </script>
 </body>
 </html>
